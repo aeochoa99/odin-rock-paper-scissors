@@ -31,3 +31,17 @@ function playRound(playerChoice, computerChoice) {
         computerScore++;
     }
 }
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound(getPlayerChoice(), getComputerChoice());
+    }
+
+    if (playerScore > computerScore) {
+        console.log(`You win ${playerScore}-${computerScore}!`);
+    } else if (playerScore < computerScore) {
+        console.log(`You lose ${playerScore}-${computerScore}!`);
+    } else {
+        console.log(`It's a tie ${playerScore}-${computerScore}!`);
+    }
+}
