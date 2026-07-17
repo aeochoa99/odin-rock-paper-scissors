@@ -1,6 +1,7 @@
 const choices = ["ROCK", "PAPER", "SCISSORS"];
 const startBtn = document.querySelector("#start");
 const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -13,6 +14,7 @@ let displayPlayerScore = document.querySelector(".scoreboard > :first-child");
 let displayComputerScore = document.querySelector(".scoreboard > :last-child");
 
 rockBtn.disabled = true;
+paperBtn.disabled = true;
 
 startBtn.addEventListener("click", () => {
     startBtn.disabled = true;
@@ -20,6 +22,7 @@ startBtn.addEventListener("click", () => {
     startBtn.style.color = "#636363";
 
     rockBtn.disabled = false;
+    paperBtn.disabled = false;
 
     displayPlayerChoice.textContent = "Make your choice!";
     displayComputerChoice.textContent = "Bring it on!";
@@ -39,19 +42,20 @@ rockBtn.addEventListener("click", () => {
     displayRound.textContent = `Round ${currentRound}`;
 })
 
+paperBtn.addEventListener("click", () => {
+    let playerChoice = "PAPER";
+    let computerChoice = getComputerChoice();
+
+    displayPlayerChoice.textContent = playerChoice;
+    displayComputerChoice.textContent = computerChoice;
+
+    determineWinner(playerChoice, computerChoice);
+    displayRound.textContent = `Round ${currentRound}`;
+})
+
 function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
-
-/*function getPlayerChoice() {
-    choice = prompt("Enter 'rock', 'paper', or scissors'.").toLowerCase().replace(/\s/g, '');
-
-    if (choice !== choices[0] && choice !== choices[1] && choice !== choices[2]) {
-        return "Please enter a valid choice.";
-    }
-
-    return choice;
-}*/
 
 function determineWinner(playerChoice, computerChoice) {
     if (playerChoice === "ROCK" && computerChoice === "SCISSORS" ||
@@ -69,17 +73,3 @@ function determineWinner(playerChoice, computerChoice) {
         currentRound++;
     }
 }
-
-/*function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound(getPlayerChoice(), getComputerChoice());
-    }
-
-    if (playerScore > computerScore) {
-        console.log(`You win ${playerScore}-${computerScore}!`);
-    } else if (playerScore < computerScore) {
-        console.log(`You lose ${playerScore}-${computerScore}!`);
-    } else {
-        console.log(`It's a tie ${playerScore}-${computerScore}!`);
-    }
-}*/
