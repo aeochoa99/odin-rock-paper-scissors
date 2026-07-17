@@ -2,6 +2,7 @@ const choices = ["ROCK", "PAPER", "SCISSORS"];
 const startBtn = document.querySelector("#start");
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
 
 let computerScore = 0;
 let playerScore = 0;
@@ -15,6 +16,7 @@ let displayComputerScore = document.querySelector(".scoreboard > :last-child");
 
 rockBtn.disabled = true;
 paperBtn.disabled = true;
+scissorsBtn.disabled = true;
 
 startBtn.addEventListener("click", () => {
     startBtn.disabled = true;
@@ -23,6 +25,7 @@ startBtn.addEventListener("click", () => {
 
     rockBtn.disabled = false;
     paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
 
     displayPlayerChoice.textContent = "Make your choice!";
     displayComputerChoice.textContent = "Bring it on!";
@@ -44,6 +47,17 @@ rockBtn.addEventListener("click", () => {
 
 paperBtn.addEventListener("click", () => {
     let playerChoice = "PAPER";
+    let computerChoice = getComputerChoice();
+
+    displayPlayerChoice.textContent = playerChoice;
+    displayComputerChoice.textContent = computerChoice;
+
+    determineWinner(playerChoice, computerChoice);
+    displayRound.textContent = `Round ${currentRound}`;
+})
+
+scissorsBtn.addEventListener("click", () => {
+    let playerChoice = "SCISSORS";
     let computerChoice = getComputerChoice();
 
     displayPlayerChoice.textContent = playerChoice;
