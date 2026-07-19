@@ -4,6 +4,23 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 
+const rockBtnComputedStyles = window.getComputedStyle(rockBtn);
+const paperBtnComputedStyles = window.getComputedStyle(paperBtn);
+const scissorsBtnComputedStyles = window.getComputedStyle(scissorsBtn);
+const startBtnComputedStyles = window.getComputedStyle(startBtn);
+
+const startBtnBackgroundColor = startBtnComputedStyles.backgroundColor;
+const startBtnColor = startBtnComputedStyles.color;
+
+const rockBtnBackgroundColor = rockBtnComputedStyles.backgroundColor;
+const rockBtnColor = rockBtnComputedStyles.color;
+
+const paperBtnBackgroundColor = paperBtnComputedStyles.backgroundColor;
+const paperBtnColor = paperBtnComputedStyles.color;
+
+const scissorsBtnBackgroundColor = scissorsBtnComputedStyles.backgroundColor;
+const scissorsBtnColor = scissorsBtnComputedStyles.color;
+
 let computerScore = 0;
 let playerScore = 0;
 let currentRound = 0;
@@ -111,4 +128,18 @@ function disableButtons() {
     paperBtn.style.color = "#636363";
     scissorsBtn.style.backgroundColor = "#999999";
     scissorsBtn.style.color = "#636363";
+}
+
+function resetBtnStyles() {
+    startBtn.style.backgroundColor = startBtnBackgroundColor;
+    startBtn.style.color = startBtnColor;
+
+    rockBtn.style.backgroundColor = rockBtnBackgroundColor;
+    rockBtn.style.color = rockBtnColor;
+
+    paperBtn.style.backgroundColor = paperBtnBackgroundColor;
+    paperBtn.style.color = paperBtnColor;
+
+    scissorsBtn.style.backgroundColor = scissorsBtnBackgroundColor;
+    scissorsBtn.style.color = scissorsBtnColor;
 }
