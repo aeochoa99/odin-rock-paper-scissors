@@ -48,6 +48,10 @@ h2 {
     color: #CBD5E1;
 }
 
+.results {
+    font-size: 24px;
+}
+
 .scoreboard > p:nth-child(1),
 .scoreboard > p:nth-child(3) {
     display: flex;
@@ -107,4 +111,8 @@ button:active {
 
 .start button {
     background-color: #F59E0B;
+}
+
+#round {
+    font-size: 24px;
 }
