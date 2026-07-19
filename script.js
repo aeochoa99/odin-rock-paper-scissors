@@ -27,6 +27,7 @@ let currentRound = 0;
 
 let displayRound = document.querySelector("#round");
 let displayPlayerChoice = document.querySelector(".results > :first-child");
+let displayTie = document.querySelector(".results > :nth-child(2)");
 let displayComputerChoice = document.querySelector(".results > :last-child");
 let displayPlayerScore = document.querySelector(".scoreboard > :first-child");
 let displayComputerScore = document.querySelector(".scoreboard > :last-child");
@@ -104,12 +105,14 @@ function determineWinner(playerChoice, computerChoice) {
         playerScore++;
         displayPlayerScore.textContent = playerScore;
         currentRound++;
+        displayTie.textContent = "";
     } else if (playerChoice === computerChoice) {
-        console.log(`It's a tie! You both picked ${playerChoice}!`);
+        displayTie.textContent = "Tie, no point awarded.";
     } else {
         computerScore++;
         displayComputerScore.textContent = computerScore;
         currentRound++;
+        displayTie.textContent = "";
     }
 }
 
