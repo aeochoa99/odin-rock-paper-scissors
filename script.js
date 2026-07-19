@@ -36,6 +36,11 @@ paperBtn.disabled = true;
 scissorsBtn.disabled = true;
 
 startBtn.addEventListener("click", () => {
+    if (currentRound > 0) {
+        resetBtnStyles();
+        resetGame();
+    }
+
     startBtn.disabled = true;
     startBtn.style.backgroundColor = "#999999";
     startBtn.style.color = "#636363";
@@ -112,6 +117,7 @@ function isGameOver() {
     if (playerScore == 3 || computerScore == 3) {
         displayRound.textContent = "FINAL";
         disableButtons();
+        resetStartBtn();
     } else {
         displayRound.textContent = `Round ${currentRound}`;
     }
@@ -131,9 +137,6 @@ function disableButtons() {
 }
 
 function resetBtnStyles() {
-    startBtn.style.backgroundColor = startBtnBackgroundColor;
-    startBtn.style.color = startBtnColor;
-
     rockBtn.style.backgroundColor = rockBtnBackgroundColor;
     rockBtn.style.color = rockBtnColor;
 
@@ -142,4 +145,21 @@ function resetBtnStyles() {
 
     scissorsBtn.style.backgroundColor = scissorsBtnBackgroundColor;
     scissorsBtn.style.color = scissorsBtnColor;
+}
+
+function resetStartBtn() {
+    startBtn.style.backgroundColor = startBtnBackgroundColor;
+    startBtn.style.color = startBtnColor;
+    startBtn.textContent = "NEW GAME";
+    startBtn.disabled = false;
+}
+
+function resetGame() {
+    currentRound = 0;
+    playerScore = 0;
+    computerScore = 0;
+
+    displayRound.textContent = currentRound
+    displayPlayerScore.textContent = playerScore;
+    displayComputerScore.textContent = computerScore;
 }
