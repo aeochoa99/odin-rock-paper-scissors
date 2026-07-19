@@ -42,7 +42,8 @@ rockBtn.addEventListener("click", () => {
     displayComputerChoice.textContent = computerChoice;
 
     determineWinner(playerChoice, computerChoice);
-    displayRound.textContent = `Round ${currentRound}`;
+
+    isGameOver();
 })
 
 paperBtn.addEventListener("click", () => {
@@ -53,7 +54,8 @@ paperBtn.addEventListener("click", () => {
     displayComputerChoice.textContent = computerChoice;
 
     determineWinner(playerChoice, computerChoice);
-    displayRound.textContent = `Round ${currentRound}`;
+
+    isGameOver();
 })
 
 scissorsBtn.addEventListener("click", () => {
@@ -64,7 +66,8 @@ scissorsBtn.addEventListener("click", () => {
     displayComputerChoice.textContent = computerChoice;
 
     determineWinner(playerChoice, computerChoice);
-    displayRound.textContent = `Round ${currentRound}`;
+
+    isGameOver();
 })
 
 function getComputerChoice() {
@@ -86,4 +89,26 @@ function determineWinner(playerChoice, computerChoice) {
         displayComputerScore.textContent = computerScore;
         currentRound++;
     }
+}
+
+function isGameOver() {
+    if (playerScore == 3 || computerScore == 3) {
+        displayRound.textContent = "FINAL";
+        disableButtons();
+    } else {
+        displayRound.textContent = `Round ${currentRound}`;
+    }
+}
+
+function disableButtons() {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled =true;
+
+    rockBtn.style.backgroundColor = "#999999";
+    rockBtn.style.color = "#636363";
+    paperBtn.style.backgroundColor = "#999999";
+    paperBtn.style.color = "#636363";
+    scissorsBtn.style.backgroundColor = "#999999";
+    scissorsBtn.style.color = "#636363";
 }
